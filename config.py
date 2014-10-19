@@ -3,6 +3,7 @@
 from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
+from Xlib import display
 import subprocess
 import re
 import os
@@ -15,6 +16,10 @@ cursor_warp = False
 follow_mouse_focus = False
 dgroups_key_binder = None
 dgroups_app_rules = []
+
+last_window_id = None
+x_display = display.Display()
+x_screen = x_display.screen()
 
 
 def execute(command):
@@ -187,6 +192,23 @@ def floating_dialogs(window):
 
     if dialog or transient:
         window.floating = True
+
+
+@hook.subscribe.client_focus
+def update_pointer(window):
+    global last_window_id, x_screen, x_display
+    window_id = window.info()['id']
+
+    if window_id == last_window_id:
+        return False
+
+    last_window_id = window_id
+    pos_x, pos_y = window.getposition()
+    width, height = window.getsize()
+
+    x_screen.root.warp_pointer(int(width / 2) + pos_x,
+                               int(height / 2) + pos_y)
+    x_display.sync()
 
 
 def main(qtile):
