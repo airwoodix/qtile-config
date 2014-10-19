@@ -1,0 +1,7 @@
+#!/bin/sh
+
+/usr/bin/xset b off
+/usr/bin/xset r rate 200 30
+/usr/bin/setxkbmap -option caps:none
+/usr/bin/xsetroot -bg "#000000"
+/usr/bin/xrdb -merge ~/.config/qtile/conf/.Xdefaults
