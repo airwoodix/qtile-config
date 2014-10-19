@@ -138,7 +138,13 @@ screens = [
                     energy_full_file='charge_full',
                     power_now_file='current_now',
                     charge_char='↑',
-                    discharge_char='↓'
+                    discharge_char='↓',
+                    foreground='#18BAEB'
+                ),
+                widget.TextBox('Vol:'),
+                widget.Volume(
+                    cardid=1,
+                    foreground='#18BAEB'
                 ),
                 widget.Systray(icon_size=14),
                 widget.Spacer(width=5),
