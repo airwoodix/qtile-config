@@ -114,22 +114,17 @@ for i in groups:
     keys.append(Key([ALT], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([ALT, SHIFT], i.name, lazy.window.togroup(i.name)))
 
+layout_defaults = {
+    'margin': 0,
+    'border_width': 1,
+    'border_normal': '#111111',
+    'border_focus': '#215578',
+}
+
 # Layouts
 layouts = [
-    myMonadTall(
-        name='Tall',
-        margin=0,
-        border_width=1,
-        border_normal='#111111',
-        border_focus='#215578'
-    ),
-    VerticalTall(
-        name='VerticalTall',
-        margin=0,
-        border_width=1,
-        border_normal='#111111',
-        border_focus='#215578'
-    ),
+    myMonadTall(name='Tall', **layout_defaults),
+    VerticalTall(name='VerticalTall', **layout_defaults),
     layout.Max(name='Full'),
 ]
 
