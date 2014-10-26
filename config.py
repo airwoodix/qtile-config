@@ -4,6 +4,9 @@ from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
 from lib.layout import VerticalTall, myMonadTall
+from lib.default import layout_defaults, floating_layout_defaults,\
+    bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
+
 from Xlib import display
 import subprocess
 import re
@@ -114,13 +117,6 @@ for i in groups:
     keys.append(Key([ALT], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([ALT, SHIFT], i.name, lazy.window.togroup(i.name)))
 
-layout_defaults = {
-    'margin': 0,
-    'border_width': 1,
-    'border_normal': '#111111',
-    'border_focus': '#215578',
-}
-
 # Layouts
 layouts = [
     myMonadTall(name='Tall', **layout_defaults),
@@ -128,39 +124,7 @@ layouts = [
     layout.Max(name='Full'),
 ]
 
-floating_layout = layout.Floating(
-    margin=0,
-    border_width=1,
-    border_normal='#111111',
-    border_focus='#215578'
-)
-
-# widget defaults
-widget_defaults = {
-    'font': 'Monospace',
-    'fontsize': 12,
-}
-
-widget_graph_defaults = {
-    'margin_y': 4,
-    'border_width': 1,
-    'line_width': 1,
-}
-
-widget_sep_defaults = {
-    'foreground': '#215578',
-    'linewidth': 2,
-    'height_percent': 55,
-    'padding': 14,
-}
-
-# bar defaults
-bar_defaults = {
-    'size': 24,
-    'background': '#000000',
-    'font': 'Monospace',
-    'padding': 0,
-}
+floating_layout = layout.Floating(**floating_layout_defaults)
 
 # Screens and widget options
 screens = [
