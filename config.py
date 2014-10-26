@@ -129,20 +129,23 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=[
-                widget.WindowName(padding=0),
+                widget.WindowName(padding=6),
                 widget.TextBox('Cpu:'),
                 widget.CPUGraph(
+                    margin_y=4,
                     border_width=1,
                     line_width=1
                 ),
                 widget.TextBox('Mem:'),
                 widget.MemoryGraph(
+                    margin_y=4,
                     border_width=1,
                     line_width=1
                 ),
 
                 widget.TextBox('Net:'),
                 widget.NetGraph(
+                    margin_y=4,
                     border_width=1,
                     line_width=1
                 ),
@@ -161,41 +164,45 @@ screens = [
                     foreground='#18BAEB'
                 ),
                 widget.Systray(icon_size=14),
-                widget.Spacer(width=5),
+                widget.Spacer(width=6),
             ],
-            size=20,
+            size=24,
             background='#000000',
-            font='Ubuntu',
+            font='Monospace',
             padding=0,
         ),
         bottom=bar.Bar(
             widgets=[
                 widget.GroupBox(
-                    rouded=False,
-                    highlight_method='block',
-                    padding=0,
-                    margin=2
+                    rouded=True,
+                    borderwidth=2,
+                    padding=2,
                 ),
-                widget.TextBox(':'),
-                widget.CurrentLayout(),
-                widget.Prompt(foreground='#ff0000'),
+                widget.Sep(
+                    foreground='#215578',
+                    linewidth=2,
+                    height_percent=55,
+                    padding=14
+                ),
+                widget.CurrentLayout(padding=2),
+                widget.Prompt(foreground='#ff0000', prompt=':'),
                 widget.Spacer(width=bar.STRETCH),
                 widget.Clock(
-                    format='%a %d. %b kw%U %H:%M:%S',
-                    padding=0,
+                    format='%a %d. %b kw%V %H:%M:%S',
+                    padding=6,
                 ),
             ],
-            size=20,
+            size=24,
             background='#000000',
-            font='Ubuntu',
+            font='Monospace',
             padding=0,
         ),
     ),
 ]
 
 widget_defaults = dict(
-    font='Ubuntu',
-    fontsize=14
+    font='Monospace',
+    fontsize=12
 )
 
 
