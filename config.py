@@ -10,13 +10,21 @@ import re
 import os
 
 wmname = 'qtile'
-modkey = 'mod1'
 auto_fullscreen = True
 bring_front_click = True
 cursor_warp = False
 follow_mouse_focus = False
 dgroups_key_binder = None
 dgroups_app_rules = []
+
+# key macros
+ALT = 'mod1'
+WIN = 'mod4'
+TAB = 'Tab'
+CTRL = 'control'
+SHIFT = 'shift'
+RETURN = 'Return'
+SPACE = 'space'
 
 last_window_id = None
 x_display = display.Display()
@@ -37,54 +45,54 @@ class command:
 # Key bindings
 keys = [
     # Window manager controls
-    Key([modkey, 'control'], 'r', lazy.restart()),
-    Key([modkey, 'control'], 'q', lazy.shutdown()),
-    Key([modkey], 'r', lazy.spawncmd()),
-    Key([modkey], 'Return', lazy.spawn(command.terminal)),
-    Key([modkey], 'q', lazy.window.kill()),
-    Key([modkey], 'p', lazy.spawncmd()),
-    Key([modkey], 't', lazy.window.toggle_floating()),
-    Key([modkey], 'space', lazy.nextlayout()),
+    Key([ALT, CTRL], 'r', lazy.restart()),
+    Key([ALT, CTRL], 'q', lazy.shutdown()),
+    Key([ALT], 'r', lazy.spawncmd()),
+    Key([ALT], RETURN, lazy.spawn(command.terminal)),
+    Key([ALT], 'q', lazy.window.kill()),
+    Key([ALT], 'p', lazy.spawncmd()),
+    Key([ALT], 't', lazy.window.toggle_floating()),
+    Key([ALT], SPACE, lazy.nextlayout()),
 
     # Move Focus
-    Key([modkey], 'Tab', lazy.layout.next()),
-    Key([modkey, 'shift'], 'Tab', lazy.layout.previous()),
-    Key([modkey], 'h', lazy.layout.left()),
-    Key([modkey], 'j', lazy.layout.down()),
-    Key([modkey], 'k', lazy.layout.up()),
-    Key([modkey], 'l', lazy.layout.right()),
-    Key([modkey], 'w', lazy.prev_screen()),
-    Key([modkey], 'e', lazy.next_screen()),
-    Key(['mod4'], '1', lazy.to_screen(0)),
-    Key(['mod4'], '2', lazy.to_screen(1)),
-    Key(['mod4'], '3', lazy.to_screen(2)),
+    Key([ALT], TAB, lazy.layout.next()),
+    Key([ALT, SHIFT], TAB, lazy.layout.previous()),
+    Key([ALT], 'h', lazy.layout.left()),
+    Key([ALT], 'j', lazy.layout.down()),
+    Key([ALT], 'k', lazy.layout.up()),
+    Key([ALT], 'l', lazy.layout.right()),
+    Key([ALT], 'w', lazy.prev_screen()),
+    Key([ALT], 'e', lazy.next_screen()),
+    Key([WIN], '1', lazy.to_screen(0)),
+    Key([WIN], '2', lazy.to_screen(1)),
+    Key([WIN], '3', lazy.to_screen(2)),
 
     # Move Window
-    Key([modkey, 'shift'], 'j', lazy.layout.shuffle_down()),
-    Key([modkey, 'shift'], 'k', lazy.layout.shuffle_up()),
+    Key([ALT, SHIFT], 'j', lazy.layout.shuffle_down()),
+    Key([ALT, SHIFT], 'k', lazy.layout.shuffle_up()),
 
     # Alter Window Size
-    Key([modkey, 'shift'], 'h', lazy.layout.shrink()),
-    Key([modkey, 'shift'], 'l', lazy.layout.grow()),
-    Key([modkey], 'm', lazy.layout.maximize()),
-    Key([modkey], 'n', lazy.layout.normalize()),
-    Key([modkey, 'shift'], 'n', lazy.layout.reset()),
+    Key([ALT, SHIFT], 'h', lazy.layout.shrink()),
+    Key([ALT, SHIFT], 'l', lazy.layout.grow()),
+    Key([ALT, SHIFT], 'n', lazy.layout.reset()),
+    Key([ALT], 'm', lazy.layout.maximize()),
+    Key([ALT], 'n', lazy.layout.normalize()),
 
     # Swap/Flip Windows
-    Key([modkey, 'shift'], 'space', lazy.layout.flip()),
-    Key([modkey], 'i', lazy.layout.swap_main()),
+    Key([ALT, SHIFT], SPACE, lazy.layout.flip()),
+    Key([ALT], 'i', lazy.layout.swap_main()),
 
     # Lock and Powermangament
-    Key([modkey, 'control'], 'l', lazy.spawn(command.lock)),
-    Key([modkey, 'control'], 'p', lazy.spawn(command.suspend)),
-    Key([modkey, 'control'], 'h', lazy.spawn(command.hibernate)),
+    Key([ALT, CTRL], 'l', lazy.spawn(command.lock)),
+    Key([ALT, CTRL], 'p', lazy.spawn(command.suspend)),
+    Key([ALT, CTRL], 'h', lazy.spawn(command.hibernate)),
 ]
 
 # Mouse bindings and options
 mouse = (
-    Drag([modkey], 'Button1', lazy.window.set_position_floating(),
+    Drag([ALT], 'Button1', lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag([modkey], 'Button3', lazy.window.set_size_floating(),
+    Drag([ALT], 'Button3', lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
 )
 
@@ -103,8 +111,8 @@ groups = [
 ]
 
 for i in groups:
-    keys.append(Key([modkey], i.name, lazy.group[i.name].toscreen()))
-    keys.append(Key([modkey, 'shift'], i.name, lazy.window.togroup(i.name)))
+    keys.append(Key([ALT], i.name, lazy.group[i.name].toscreen()))
+    keys.append(Key([ALT, SHIFT], i.name, lazy.window.togroup(i.name)))
 
 # Layouts
 layouts = [
