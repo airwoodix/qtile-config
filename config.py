@@ -47,18 +47,31 @@ keys = [
 
     # Move Focus
     Key([modkey], 'Tab', lazy.layout.next()),
+    Key([modkey, 'shift'], 'Tab', lazy.layout.previous()),
+    Key([modkey], 'h', lazy.layout.left()),
     Key([modkey], 'j', lazy.layout.down()),
     Key([modkey], 'k', lazy.layout.up()),
+    Key([modkey], 'l', lazy.layout.right()),
+    Key([modkey], 'w', lazy.prev_screen()),
+    Key([modkey], 'e', lazy.next_screen()),
+    Key(['mod4'], '1', lazy.to_screen(0)),
+    Key(['mod4'], '2', lazy.to_screen(1)),
+    Key(['mod4'], '3', lazy.to_screen(2)),
 
-    # Move/Alter Window
+    # Move Window
     Key([modkey, 'shift'], 'j', lazy.layout.shuffle_down()),
     Key([modkey, 'shift'], 'k', lazy.layout.shuffle_up()),
-    Key([modkey], 'l', lazy.layout.grow()),
-    Key([modkey], 'h', lazy.layout.shrink()),
-    Key([modkey], 'i', lazy.layout.maximize()),
-    Key([modkey], 'm', lazy.layout.flip()),
+
+    # Alter Window Size
+    Key([modkey, 'shift'], 'h', lazy.layout.shrink()),
+    Key([modkey, 'shift'], 'l', lazy.layout.grow()),
+    Key([modkey], 'm', lazy.layout.maximize()),
     Key([modkey], 'n', lazy.layout.normalize()),
-    Key([modkey], '0', lazy.layout.swap_left()),
+    Key([modkey, 'shift'], 'n', lazy.layout.reset()),
+
+    # Swap/Flip Windows
+    Key([modkey, 'shift'], 'space', lazy.layout.flip()),
+    Key([modkey], 'i', lazy.layout.swap_main()),
 
     # Lock and Powermangament
     Key([modkey, 'control'], 'l', lazy.spawn(command.lock)),
