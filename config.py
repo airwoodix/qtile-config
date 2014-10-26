@@ -3,6 +3,7 @@
 from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
+from lib.layout import VerticalTall, myMonadTall
 from Xlib import display
 import subprocess
 import re
@@ -107,8 +108,15 @@ for i in groups:
 
 # Layouts
 layouts = [
-    layout.MonadTall(
+    myMonadTall(
         name='Tall',
+        margin=0,
+        border_width=1,
+        border_normal='#111111',
+        border_focus='#215578'
+    ),
+    VerticalTall(
+        name='VerticalTall',
         margin=0,
         border_width=1,
         border_normal='#111111',
