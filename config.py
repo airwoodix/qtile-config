@@ -132,6 +132,33 @@ floating_layout = layout.Floating(
     border_focus='#215578'
 )
 
+# widget defaults
+widget_defaults = {
+    'font': 'Monospace',
+    'fontsize': 12,
+}
+
+widget_graph_defaults = {
+    'margin_y': 4,
+    'border_width': 1,
+    'line_width': 1,
+}
+
+widget_sep_defaults = {
+    'foreground': '#215578',
+    'linewidth': 2,
+    'height_percent': 55,
+    'padding': 14,
+}
+
+# bar defaults
+bar_defaults = {
+    'size': 24,
+    'background': '#000000',
+    'font': 'Monospace',
+    'padding': 0,
+}
+
 # Screens and widget options
 screens = [
     Screen(
@@ -139,24 +166,14 @@ screens = [
             widgets=[
                 widget.WindowName(padding=6),
                 widget.TextBox('Cpu:'),
-                widget.CPUGraph(
-                    margin_y=4,
-                    border_width=1,
-                    line_width=1
-                ),
+                widget.CPUGraph(**widget_graph_defaults),
+
                 widget.TextBox('Mem:'),
-                widget.MemoryGraph(
-                    margin_y=4,
-                    border_width=1,
-                    line_width=1
-                ),
+                widget.MemoryGraph(**widget_graph_defaults),
 
                 widget.TextBox('Net:'),
-                widget.NetGraph(
-                    margin_y=4,
-                    border_width=1,
-                    line_width=1
-                ),
+                widget.NetGraph(**widget_graph_defaults),
+
                 widget.TextBox('Bat:'),
                 widget.Battery(
                     energy_now_file='charge_now',
@@ -174,10 +191,7 @@ screens = [
                 widget.Systray(icon_size=14),
                 widget.Spacer(width=6),
             ],
-            size=24,
-            background='#000000',
-            font='Monospace',
-            padding=0,
+            **bar_defaults
         ),
         bottom=bar.Bar(
             widgets=[
@@ -186,12 +200,7 @@ screens = [
                     borderwidth=2,
                     padding=2,
                 ),
-                widget.Sep(
-                    foreground='#215578',
-                    linewidth=2,
-                    height_percent=55,
-                    padding=14
-                ),
+                widget.Sep(**widget_sep_defaults),
                 widget.CurrentLayout(padding=2),
                 widget.Prompt(foreground='#ff0000', prompt=':'),
                 widget.Spacer(width=bar.STRETCH),
@@ -200,18 +209,10 @@ screens = [
                     padding=6,
                 ),
             ],
-            size=24,
-            background='#000000',
-            font='Monospace',
-            padding=0,
+            **bar_defaults
         ),
     ),
 ]
-
-widget_defaults = dict(
-    font='Monospace',
-    fontsize=12
-)
 
 
 @hook.subscribe.startup
