@@ -151,10 +151,7 @@ screens = [
                     foreground='#18BAEB'
                 ),
                 widget.TextBox('Vol:'),
-                widget.Volume(
-                    cardid=1,
-                    foreground='#18BAEB'
-                ),
+                widget.Volume(foreground='#18BAEB'),
                 widget.Systray(icon_size=14),
                 widget.Spacer(width=6),
             ],
