@@ -26,6 +26,26 @@ class myMonadTall(MonadTall):
             self.ratio = self._min_ratio
             self._grow_secondary(maxed_size)
 
+    def cmd_resize_left(self):
+        if len(self.clients) > 2:
+            self.cmd_shrink()
+            return
+
+        if self.focused == 0:
+            self.cmd_shrink()
+        else:
+            self.cmd_grow()
+
+    def cmd_resize_right(self):
+        if len(self.clients) > 2:
+            self.cmd_grow()
+            return
+
+        if self.focused == 0:
+            self.cmd_grow()
+        else:
+            self.cmd_shrink()
+
 
 class VerticalTall(MonadTall):
     def cmd_normalize(self, redraw=True):

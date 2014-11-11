@@ -75,8 +75,8 @@ keys = [
     Key([ALT, SHIFT], 'k', lazy.layout.shuffle_up()),
 
     # Alter Window Size
-    Key([ALT, SHIFT], 'h', lazy.layout.shrink()),
-    Key([ALT, SHIFT], 'l', lazy.layout.grow()),
+    Key([ALT, SHIFT], 'h', lazy.layout.resize_left()),
+    Key([ALT, SHIFT], 'l', lazy.layout.resize_right()),
     Key([ALT, SHIFT], 'n', lazy.layout.reset()),
     Key([ALT], 'm', lazy.layout.maximize()),
     Key([ALT], 'n', lazy.layout.normalize()),
