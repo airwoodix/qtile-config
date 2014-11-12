@@ -4,7 +4,7 @@ from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
 from lib.layout import VerticalTall, myMonadTall
-from lib.default import layout_defaults, floating_layout_defaults,\
+from lib.default import style, layout_defaults, floating_layout_defaults,\
     bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
 
 from Xlib import display
@@ -148,30 +148,23 @@ screens = [
                     power_now_file='current_now',
                     charge_char='↑',
                     discharge_char='↓',
-                    foreground='#18BAEB'
+                    foreground=style.color.bright_blue
                 ),
                 widget.TextBox('Vol:'),
-                widget.Volume(foreground='#18BAEB'),
-                widget.Systray(icon_size=14),
+                widget.Volume(foreground=style.color.bright_blue),
+                widget.Systray(icon_size=style.icon_size),
                 widget.Spacer(width=6),
             ],
             **bar_defaults
         ),
         bottom=bar.Bar(
             widgets=[
-                widget.GroupBox(
-                    rouded=True,
-                    borderwidth=2,
-                    padding=2,
-                ),
+                widget.GroupBox(rouded=True, borderwidth=2, padding=2),
                 widget.Sep(**widget_sep_defaults),
                 widget.CurrentLayout(padding=2),
-                widget.Prompt(foreground='#ff0000', prompt=':'),
+                widget.Prompt(foreground=style.color.red, prompt=':'),
                 widget.Spacer(width=bar.STRETCH),
-                widget.Clock(
-                    format='%a %d. %b kw%V %H:%M:%S',
-                    padding=6,
-                ),
+                widget.Clock(format=style.clock_format, padding=6),
             ],
             **bar_defaults
         ),
