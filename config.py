@@ -9,7 +9,6 @@ from lib.default import style, layout_defaults, floating_layout_defaults,\
 
 from Xlib import display
 import subprocess
-import re
 import os
 
 wmname = 'qtile'
