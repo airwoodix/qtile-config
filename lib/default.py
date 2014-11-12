@@ -1,27 +1,42 @@
+class style:
+    font = 'Monospace'
+    clock_format = '%a %d. %b kw%V %H:%M:%S'
+    fontsize = 12
+    icon_size = 14
+    border_width = 1
+
+    class color:
+        black = '#000000'
+        blue = '#215578'
+        bright_blue = '#18BAEB'
+        grey = '#111111'
+        red = '#ff0000'
+
+
 layout_defaults = {
     'margin': 0,
-    'border_width': 1,
-    'border_normal': '#111111',
-    'border_focus': '#215578',
+    'border_width': style.border_width,
+    'border_normal': style.color.grey,
+    'border_focus': style.color.blue,
 }
 
 floating_layout_defaults = {
     'margin': 0,
-    'border_width': 1,
-    'border_normal': '#111111',
-    'border_focus=': '#215578',
+    'border_width': style.border_width,
+    'border_normal': style.color.grey,
+    'border_focus': style.color.blue,
 }
 
 bar_defaults = {
     'size': 24,
-    'background': '#000000',
-    'font': 'Monospace',
+    'background': style.color.black,
+    'font': style.font,
     'padding': 0,
 }
 
 widget_defaults = {
-    'font': 'Monospace',
-    'fontsize': 12,
+    'font': style.font,
+    'fontsize': style.fontsize,
 }
 
 widget_graph_defaults = {
@@ -31,7 +46,7 @@ widget_graph_defaults = {
 }
 
 widget_sep_defaults = {
-    'foreground': '#215578',
+    'foreground': style.color.blue,
     'linewidth': 2,
     'height_percent': 55,
     'padding': 14,
