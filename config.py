@@ -49,12 +49,13 @@ keys = [
     # Window manager controls
     Key([ALT, CTRL], 'r', lazy.restart()),
     Key([ALT, CTRL], 'q', lazy.shutdown()),
-    Key([ALT], 'r', lazy.spawncmd()),
+    Key([ALT, SHIFT], SPACE, lazy.layout.flip()),
     Key([ALT], RETURN, lazy.spawn(command.terminal)),
+    Key([ALT], SPACE, lazy.nextlayout()),
     Key([ALT], 'q', lazy.window.kill()),
     Key([ALT], 'p', lazy.spawncmd()),
     Key([ALT], 't', lazy.window.toggle_floating()),
-    Key([ALT], SPACE, lazy.nextlayout()),
+    Key([ALT], 'f', lazy.window.toggle_fullscreen()),
 
     # Move Focus
     Key([ALT], TAB, lazy.layout.next()),
@@ -72,6 +73,7 @@ keys = [
     # Move Window
     Key([ALT, SHIFT], 'j', lazy.layout.shuffle_down()),
     Key([ALT, SHIFT], 'k', lazy.layout.shuffle_up()),
+    Key([ALT], 'i', lazy.layout.swap_main()),
 
     # Alter Window Size
     Key([ALT, SHIFT], 'h', lazy.layout.resize_left()),
@@ -79,10 +81,6 @@ keys = [
     Key([ALT, SHIFT], 'n', lazy.layout.reset()),
     Key([ALT], 'm', lazy.layout.maximize()),
     Key([ALT], 'n', lazy.layout.normalize()),
-
-    # Swap/Flip Windows
-    Key([ALT, SHIFT], SPACE, lazy.layout.flip()),
-    Key([ALT], 'i', lazy.layout.swap_main()),
 
     # Lock and Powermangament
     Key([ALT, CTRL], 'l', lazy.spawn(command.lock)),
