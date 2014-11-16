@@ -3,7 +3,7 @@
 from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
-from lib.layout import VerticalTall, myMonadTall
+from lib.layout import VerticalTile, myMonadTall
 from lib.default import style, layout_defaults, floating_layout_defaults,\
     bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
 
@@ -77,8 +77,8 @@ keys = [
     Key([ALT], 'i', lazy.layout.swap_main()),
 
     # Alter Window Size
-    Key([ALT, SHIFT], 'h', lazy.layout.resize_left()),
-    Key([ALT, SHIFT], 'l', lazy.layout.resize_right()),
+    Key([ALT, SHIFT], 'h', lazy.layout.shrink()),
+    Key([ALT, SHIFT], 'l', lazy.layout.grow()),
     Key([ALT, SHIFT], 'n', lazy.layout.reset()),
     Key([ALT], 'm', lazy.layout.maximize()),
     Key([ALT], 'n', lazy.layout.normalize()),
@@ -118,7 +118,7 @@ for i in groups:
 # Layouts
 layouts = [
     myMonadTall(name='Tall', **layout_defaults),
-    VerticalTall(name='VerticalTall', **layout_defaults),
+    VerticalTile(name='VerticalTile', **layout_defaults),
     layout.Max(name='Full'),
 ]
 
