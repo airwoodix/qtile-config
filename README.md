@@ -13,9 +13,11 @@ If You focuse a new window Qtile place the cursor in the middle of it.
 If You maximize an secondary pane it expands to its full available size
 in vertical and horizontal.
 
-### VerticalTall (experimental)
-Custom layout based on MonadTall. Its basicly an MonadTall without main pane.
+### VerticalTile (experimental)
 Works nice on vertical monitors.
+
+### Floating Rules
+Window name based floating rules.
 
 ### Debug
 If You have some experimental changes and You are not shure if it works You want to
@@ -35,13 +37,14 @@ To make this work You have to set `allowed_users=anybody` in `/etc/X11/Xwrapper.
 | ALT + p                   | spawn program             |
 | ALT + RETURN              | spawn terminal            |
 | ALT + t                   | toggle floating           |
+| ALT + f                   | toggle fullscreen         |
 | ALT + SPACE               | next layout               |
 | ALT + SHIFT + SPACE       | layout-flip               |
 
 ### Move Focus
 | Keys                      | Action                    |
 | ------------------------- | ------------------------- |
-| ALT + $(0..9)             | jump to workspace         |
+| ALT + $(0..9)             | jump between workspace    |
 | ALT + TAB                 | next window               |
 | ALT + SHIFT + TAB         | previous window           |
 | ALT + h                   | left                      |
@@ -84,10 +87,15 @@ nm-applet (optional)
 ```
 
 ## Install
-At first follow the official [Qtile-Installguide](http://docs.qtile.org/en/latest/manual/install/source.html).
-Then install the config:
+### Qtile
+[Qtile-Installguide](http://docs.qtile.org/en/latest/manual/install/source.html)
+
+### Config
 ```
 $ git clone https://github.com/fscherf/qtile-config.git
 $ mv qtile-config ~/.config/qtile
 $ sudo cp ~/.config/qtile/conf/qtile.desktop /usr/share/xsessions
 ```
+
+### GTK+
+[wiki.archlinux.org](https://wiki.archlinux.org/index.php/GTK%2B)
