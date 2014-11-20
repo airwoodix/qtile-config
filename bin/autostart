@@ -1,6 +1,6 @@
 #!/bin/sh
 
-~/.config/qtile//bin/xsetup
+~/.config/qtile/bin/xsetup
 killall xscreensaver nm-applet
 /usr/bin/xscreensaver -no-capture-stderr -no-splash &
 /usr/bin/nm-applet &
