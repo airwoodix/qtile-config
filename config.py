@@ -18,6 +18,7 @@ cursor_warp = False
 follow_mouse_focus = False
 dgroups_key_binder = None
 dgroups_app_rules = []
+floating_windows = ['feh ']
 
 # key macros
 ALT = 'mod1'
@@ -176,12 +177,17 @@ def startup():
 
 @hook.subscribe.client_new
 def floating_dialogs(window):
+    global floating_windows
     dialog = window.window.get_wm_type() == 'dialog'
     transient = window.window.get_wm_transient_for()
     window_name = window.name.lower()
 
     if dialog or transient:
         window.floating = True
+
+    for i in floating_windows:
+        if i in window_name:
+            window.floating = True
 
 
 @hook.subscribe.client_focus
