@@ -1,5 +1,4 @@
 !xscreensaver
-!/etc/X11/app-defaults/XScreenSaver !newLoginCommand
 
 !font settings
 xscreensaver.Dialog.headingFont:             -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
@@ -15,8 +14,8 @@ xscreensaver.Dialog.foreground:              #E7E7E7
 xscreensaver.Dialog.background:              #111111
 xscreensaver.Dialog.topShadowColor:          #111111
 xscreensaver.Dialog.bottomShadowColor:       #111111
-xscreensaver.Dialog.Button.foreground:       #111111
-xscreensaver.Dialog.Button.background:       #111111
+xscreensaver.Dialog.Button.foreground:       #E7E7E7
+xscreensaver.Dialog.Button.background:       #404040
 
 !username/password input box and date text colour
 xscreensaver.Dialog.text.foreground:         #E7E7E7
