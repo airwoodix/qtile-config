@@ -13,9 +13,6 @@ If You focuse a new window Qtile place the cursor in the middle of it.
 If You maximize an secondary pane it expands to its full available size
 in vertical and horizontal.
 
-### VerticalTile (experimental)
-Works nice on vertical monitors.
-
 ### Floating Rules
 Window name based floating rules.
 

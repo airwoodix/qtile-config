@@ -3,7 +3,7 @@
 from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
-from lib.layout import VerticalTile, myMonadTall
+from lib.layout import myMonadTall
 from lib.default import style, layout_defaults, floating_layout_defaults,\
     bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
 
@@ -118,7 +118,7 @@ for i in groups:
 # Layouts
 layouts = [
     myMonadTall(name='Tall', **layout_defaults),
-    VerticalTile(name='VerticalTile', **layout_defaults),
+    layout.VerticalTile(name='VerticalTile', **layout_defaults),
     layout.Max(name='Full'),
 ]
 
