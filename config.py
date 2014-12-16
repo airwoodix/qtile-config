@@ -6,9 +6,8 @@ from libqtile.config import Click, Drag, Group, Key, Screen
 from lib.layout import myMonadTall
 from lib.default import style, layout_defaults, floating_layout_defaults,\
     bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
-
+from lib.utils import get_alternatives, excecute
 from Xlib import display
-import subprocess
 import os
 
 wmname = 'qtile'
@@ -34,12 +33,8 @@ x_display = display.Display()
 x_screen = x_display.screen()
 
 
-def execute(command):
-    return subprocess.Popen(command.split())
-
-
 class command:
-    terminal = 'terminator'
+    terminal = get_alternatives(['terminator', 'gnome-terminal', 'xterm'])
     autostart = os.path.join(os.path.dirname(__file__), 'bin/autostart')
     lock = os.path.join(os.path.dirname(__file__), 'bin/lock')
     suspend = os.path.join(os.path.dirname(__file__), 'bin/suspend')
