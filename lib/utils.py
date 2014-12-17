@@ -26,7 +26,7 @@ def get_alternatives(alternatives):
     return False
 
 
-def excecute(command):
+def execute(command):
     """
     Opens subprocess using subprocess.Popen.
 

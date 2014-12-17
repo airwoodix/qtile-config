@@ -6,7 +6,7 @@ from libqtile.config import Click, Drag, Group, Key, Screen
 from lib.layout import myMonadTall
 from lib.default import style, layout_defaults, floating_layout_defaults,\
     bar_defaults, widget_defaults, widget_graph_defaults, widget_sep_defaults
-from lib.utils import get_alternatives, excecute
+from lib.utils import get_alternatives, execute
 from Xlib import display
 import os
 
