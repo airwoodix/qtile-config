@@ -13,7 +13,7 @@ import os
 wmname = 'qtile'
 auto_fullscreen = True
 bring_front_click = True
-cursor_warp = False
+cursor_warp = True
 follow_mouse_focus = False
 dgroups_key_binder = None
 dgroups_app_rules = []
