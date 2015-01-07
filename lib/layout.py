@@ -1,9 +1,9 @@
-from libqtile.layout.xmonad import MonadTall
+from libqtile.layout.xmonad import MonadTall as BaseMonadTall
 from libqtile.layout.base import Layout
 import math
 
 
-class myMonadTall(MonadTall):
+class MonadTall(BaseMonadTall):
     def _maximize_secondary(self):
         n = len(self.clients) - 2
         collapsed_height = self._min_height * n
