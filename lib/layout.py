@@ -1,4 +1,5 @@
 from libqtile.layout.xmonad import MonadTall as BaseMonadTall
+from libqtile.layout.verticaltile import VerticalTile as BaseVerticalTile
 from libqtile.layout.base import Layout
 import math
 
@@ -98,3 +99,45 @@ class MonadTall(BaseMonadTall):
     def cmd_swap_main(self):
         super(MonadTall, self).cmd_swap_main()
         warp_pointer(self.clients[self._focus])
+
+
+class VerticalTile(BaseVerticalTile):
+    def cmd_next(self):
+        super(VerticalTile, self).cmd_next()
+        warp_pointer(self.focused)
+
+    def cmd_previous(self):
+        super(VerticalTile, self).cmd_previous()
+        warp_pointer(self.focused)
+
+    def cmd_down(self):
+        super(VerticalTile, self).cmd_down()
+        warp_pointer(self.focused)
+
+    def cmd_up(self):
+        super(VerticalTile, self).cmd_up()
+        warp_pointer(self.focused)
+
+    def cmd_maximize(self):
+        super(VerticalTile, self).cmd_maximize()
+        warp_pointer(self.focused)
+
+    def cmd_normalize(self):
+        super(VerticalTile, self).cmd_normalize()
+        warp_pointer(self.focused)
+
+    def cmd_grow(self):
+        super(VerticalTile, self).cmd_grow()
+        warp_pointer(self.focused)
+
+    def cmd_shrink(self):
+        super(VerticalTile, self).cmd_shrink()
+        warp_pointer(self.focused)
+
+    def cmd_shuffle_up(self):
+        super(VerticalTile, self).cmd_shuffle_up()
+        warp_pointer(self.focused)
+
+    def cmd_shuffle_down(self):
+        super(VerticalTile, self).cmd_shuffle_down()
+        warp_pointer(self.focused)
