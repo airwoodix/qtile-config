@@ -9,6 +9,8 @@ def warp_pointer(window):
 
 
 class MonadTall(BaseMonadTall):
+    _min_ratio = 0.2
+
     def _maximize_secondary(self):
         n = len(self.clients) - 2
         collapsed_height = self._min_height * n
