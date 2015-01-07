@@ -186,22 +186,5 @@ def floating_dialogs(window):
             window.floating = True
 
 
-@hook.subscribe.client_focus
-def update_pointer(window):
-    global last_window_id, x_screen, x_display
-    window_id = window.info()['id']
-
-    if window_id == last_window_id:
-        return False
-
-    last_window_id = window_id
-    pos_x, pos_y = window.getposition()
-    width, height = window.getsize()
-
-    x_screen.root.warp_pointer(int(width / 2) + pos_x,
-                               int(height / 2) + pos_y)
-    x_display.sync()
-
-
 def main(qtile):
     pass
