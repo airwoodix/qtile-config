@@ -3,6 +3,10 @@ from libqtile.layout.base import Layout
 import math
 
 
+def warp_pointer(window):
+    window.window.warp_pointer(window.width / 2, window.height / 2)
+
+
 class MonadTall(BaseMonadTall):
     def _maximize_secondary(self):
         n = len(self.clients) - 2
@@ -29,20 +33,68 @@ class MonadTall(BaseMonadTall):
 
     def cmd_shrink(self):
         if len(self.clients) > 2:
-            super(myMonadTall, self).cmd_shrink()
+            super(MonadTall, self).cmd_shrink()
             return
 
         if self.focused == 0:
-            super(myMonadTall, self).cmd_shrink()
+            super(MonadTall, self).cmd_shrink()
         else:
-            super(myMonadTall, self).cmd_grow()
+            super(MonadTall, self).cmd_grow()
+
+        warp_pointer(self.clients[self._focus])
 
     def cmd_grow(self):
         if len(self.clients) > 2:
-            super(myMonadTall, self).cmd_grow()
+            super(MonadTall, self).cmd_grow()
             return
 
         if self.focused == 0:
-            super(myMonadTall, self).cmd_grow()
+            super(MonadTall, self).cmd_grow()
         else:
-            super(myMonadTall, self).cmd_shrink()
+            super(MonadTall, self).cmd_shrink()
+
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_maximize(self):
+        super(MonadTall, self).cmd_maximize()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_normalize(self, redraw=True):
+        super(MonadTall, self).cmd_normalize(redraw=redraw)
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_next(self):
+        super(MonadTall, self).cmd_next()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_previous(self):
+        super(MonadTall, self).cmd_previous()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_left(self):
+        super(MonadTall, self).cmd_left()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_down(self):
+        super(MonadTall, self).cmd_down()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_up(self):
+        super(MonadTall, self).cmd_up()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_right(self):
+        super(MonadTall, self).cmd_right()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_shuffle_up(self):
+        super(MonadTall, self).cmd_shuffle_up()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_shuffle_down(self):
+        super(MonadTall, self).cmd_shuffle_down()
+        warp_pointer(self.clients[self._focus])
+
+    def cmd_swap_main(self):
+        super(MonadTall, self).cmd_swap_main()
+        warp_pointer(self.clients[self._focus])
