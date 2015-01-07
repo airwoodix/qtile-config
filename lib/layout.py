@@ -1,6 +1,5 @@
 from libqtile.layout.xmonad import MonadTall as BaseMonadTall
 from libqtile.layout.verticaltile import VerticalTile as BaseVerticalTile
-from libqtile.layout.base import Layout
 import math
 
 
